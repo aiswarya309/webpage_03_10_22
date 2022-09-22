@@ -1,0 +1,1 @@
+export const HOME_REDUX='HOME_REDUX'

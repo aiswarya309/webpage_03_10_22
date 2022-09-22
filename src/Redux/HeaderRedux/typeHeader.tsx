@@ -1,0 +1,1 @@
+export const HEADER_REDUX = 'HEADER_REDUX'

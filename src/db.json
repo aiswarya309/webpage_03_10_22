@@ -1,0 +1,65 @@
+{
+    "image":[
+        "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2020/12/home-based-business-e1607412775539.jpg",
+        "https://www.mindmybusinessnyc.com/wp-content/uploads/2019/01/Give-Your-Home-Based-Business-a-Professional-Makeover.jpg",
+        "https://www.novelvox.com/wp-content/uploads/2020/02/Product-vs-Service-based-Companies.jpg"
+    ],
+    "navLinks":[{
+        "name":"Home",
+        "path":"/"
+    },
+    {
+        "name":"Employee",
+        "path":"/pageemployee" 
+    },
+    {
+        "name":"About",
+        "path":"/about" 
+    },
+    {
+        "name":"Feedback",
+        "path":"/feedback" 
+    },
+    {
+        "name":"Logout",
+        "path":"/login" 
+    }],
+    "employeeDetails":[{
+        "name":"Aiswarya",
+        "id":1
+    },
+    {
+        "name":"Praveena",
+        "id":2
+    },
+    {
+        "name":"Shilpa",
+        "id":3
+    }],
+    "employeeFullDetails":[{
+        "name":"Aiswarya",
+        "id":1,
+        "place":"Kozhikode",
+        "state":"Kerala",
+        "pin":673308
+
+    },
+    {
+        "name":"Praveena",
+        "id":2,
+        "place":"Kozhikode",
+        "state":"Kerala",
+        "pin":673308
+
+    },
+    {
+        "name":"Shilpa",
+        "id":3,
+        "place":"Palakkad",
+        "state":"Kerala",
+        "pin":673306
+
+    }]
+
+}
+

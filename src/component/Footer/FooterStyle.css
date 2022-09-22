@@ -1,0 +1,11 @@
+.footer{
+	display: flex;
+   justify-content: center;
+   height: 70px;
+   /* background-color: #336699; */
+}
+.footer i{
+	padding: 0 30px;
+	padding-top: 30px;
+	color:#336699 ;
+}

@@ -1,0 +1,9 @@
+.container{
+    display :flex;
+    justify-content: space-around;
+}
+.child{
+    width: 250px;
+    height: 150px;
+    background-color: #336699;
+}
