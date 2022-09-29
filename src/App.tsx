@@ -9,12 +9,18 @@ import PageEmployee from './Pages/PageEmployee/PageEmployee'
 import PageAbout from './Pages/PageAbout/PageAbout'
 import PageFeedback from './Pages/pageFeedback/pageFeedback'
 import PageEmployeeFullDetails from './Pages/pageEmployeeFullDetails/pageEmployeeFullDetails'
+import Signup from './component/signup/signup'
+import {ToastContainer ,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'  ;
+
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
       <div className="App">
+      <ToastContainer/>
+
         <Switch> 
           <Route  path='/login'>
             <Login />
@@ -24,6 +30,7 @@ function App() {
           <PrivateRoute component={PageAbout} path='/about' exact/>
           <PrivateRoute component={PageFeedback} path='/feedback'  exact/>
           <Route path='/pageEmployeeFullDetails' component={PageEmployeeFullDetails}/>
+          <Route path='/signup' component={Signup}/>
         </Switch>
       </div>
     </Router>
