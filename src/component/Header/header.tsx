@@ -13,6 +13,7 @@ type navData={
 }
 
 function Header(props:any){
+	console.log("Header.js")
 	let history =useHistory()
 	useEffect(()=>{
 		props.HeaderDispatch()

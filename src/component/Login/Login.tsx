@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import './login.css'
 import { useHistory ,Link} from "react-router-dom";
 import { authData } from "../../Redux/App/actionApp";
 import { useDispatch} from 'react-redux';
@@ -15,8 +16,7 @@ function Login(){
     const dispatch =useDispatch()
     const btnClick =() =>{
         if((txtName === 'admin') && (password === 'admin')){
-            toast.success("succes")
-
+            // toast.success("succes")
             sessionStorage.setItem("AuthValue","true")
             dispatch(authData())
             history.push('/')
@@ -24,13 +24,29 @@ function Login(){
             history.push('/login')
         }
     }
+    const logintextname=(val:any)=>{
+        setLoginData({...loginData,txtName:val.target.value})
+    }
+    const loginpassword=(val:any)=>{
+        setLoginData({...loginData,password:val.target.value})
+    }
+    const btnsignup =()=>{
+        history.push('/signup')
+    }
+    // useEffect(() => {
+    //     let isAuth:any = sessionStorage.getItem('AuthValue')
+    //     if(isAuth && isAuth !== 'undefined') {
+    //        history.push('/')
+    //     }
+    //  }, [])
         return(
-            <div>
+            <div className="container">
                 <form>
-                    Name: <input type="text"  onChange={(val)=>setLoginData({...loginData,txtName:val.target.value})} value={txtName}/><br/><br/>
-                    Password: <input type="password" onChange={(val)=>setLoginData({...loginData,password:val.target.value})} value={password}/><br/><br/>
+                    <b>Login</b> <br/><br/>
+                    Name: <input type="text"  onChange={logintextname} value={txtName}/><br/><br/>
+                    Password: <input type="password" onChange={loginpassword} value={password}/><br/><br/>
                     <button type="button" onClick={btnClick}>Login</button>
-                    <Link to="/signup">Signup</Link>
+                    <button type="button" onClick={btnsignup}>SignUp</button>
                 </form>
 
             </div>

@@ -2,6 +2,7 @@ import './FooterStyle.css'
 import { FaFacebookF,FaInstagram ,FaTwitter} from 'react-icons/fa';
 import './FooterStyle.css'
 function Footer(){
+    console.log("Footer.js")
     return(
         <footer className="common">
             <div className="container">
