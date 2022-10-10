@@ -1,4 +1,4 @@
-.container{
+.container_sign{
     padding: 50px;
     background-color: #336699;
     width: 220px;
@@ -7,7 +7,7 @@
     top: 150px;
     right: 40%;
 }
-.btnLogin{
+.btnLogin_sign{
     background-color: rgba(77, 58, 83, 0.048);
     padding: 50px;
 }

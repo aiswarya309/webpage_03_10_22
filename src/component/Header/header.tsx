@@ -7,6 +7,7 @@ import HeaderApi from "../../Redux/HeaderRedux/headerAPI";
 import {rootState} from '../../Redux/Reducer'
 import { Dispatch } from 'redux'
 import { actionHeader} from '../../type'
+import Login from '../Login/Login';
 type navData={
 	name:string,
 	path:string
@@ -31,7 +32,7 @@ function Header(props:any){
 					<ul>
 						{
 							props.navData && props.navData.map((obj:navData,index:number)=>{
-							return <li key={index} onClick={()=>{history.push(obj.path);if(obj.name === 'Logout'){ sessionStorage.setItem("AuthValue","false")}}}>{obj.name}</li> 
+							return <li key={index} onClick={()=>{history.push(obj.path);if(obj.name === 'Logout'){ sessionStorage.setItem("AuthValue","false");history.push({pathname:'/login'})}}}>{obj.name}</li> 
 							})
 						}
 						
