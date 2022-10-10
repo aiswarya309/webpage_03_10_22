@@ -1,47 +1,54 @@
-import {useState} from 'react'
+import {useState , useEffect} from 'react'
 import { useHistory } from "react-router-dom";
+import { useSelector , useDispatch } from 'react-redux/es/exports';
 import axios from 'axios';
 import {ToastContainer ,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'  ;
 import './signup.css'
+import SignupMiddle from '../../Redux/signup/signupMiddle'
+import signupReducer from '../../Redux/signup/signupReducer'
+import {SignupAction} from '../../Redux/signup/signupAction'
+import {rootState} from '../../Redux/Reducer'
+
+
 function Signup(){
-    const [signup , setsignup]=useState({
-            email :'',
-            password:'',
-            name:''
-    })
+    const [emailField, setemailField] = useState('')
+    const [passwordField, setPasswordField] = useState('')
+    const [nameField, setnameField] = useState('')
+
+
+   
+    const user=useSelector((State:rootState)=>{    console.log("state",State)
+    return State.SignupReducer.user})
     const history =useHistory()
-    const {email,password,name} =signup
+    const dispatch=useDispatch()
     const btnclick=()=>{
-        // if(email === "" && password === " " && name === " "){
-        //     toast("Fill the field")
-        //     history.push('/signup')
-        // }else{
-        axios.post('http://localhost:5000/auth/signup',{email,password,name})
         toast("success...")
+        dispatch<any>(SignupMiddle({email:emailField,password:passwordField,name:nameField}))
         history.push('/login')
-        console.log("Signup",email,password,name)
+        console.log("Signup",user)
         // }
     }
     const signupemail=(e:any)=>{
-        setsignup({...signup,email:e.target.value})
+        setemailField(e.target.value)
     }
     const signuppassword=(e:any)=>{
-        setsignup({...signup,password:e.target.value})
+        setPasswordField(e.target.value)
     }
+    // const {email,password,name}=user
     const signupname=(e:any)=>{
-        setsignup({...signup,name:e.target.value})
+        setnameField(e.target.value)
     }
     const btnlogin =()=>{
         history.push('/login')
     }
         return(
-            <div className='container'>
+            <div className='container_sign'>
                 <form>
                     <b>Signup</b> <br/><br/>
-                    Email: <input type="text" value={email} onChange={signupemail}/><br/><br/>
-                    Password: <input type="password" value={password} onChange={signuppassword}/><br/><br/>
-                    Username: <input type="text" value={name} onChange={signupname}/><br/><br/>
+                    Email: <input type="text" value={emailField} onChange={signupemail}/><br/><br/>
+                    Password: <input type="password" value={passwordField} onChange={signuppassword}/><br/><br/>
+                    Username: <input type="text" value={nameField} onChange={signupname}/><br/><br/>
                     <button type="button" onClick={btnclick}>Signup</button>
                     <button type="button" onClick={btnlogin}>Login</button>
 

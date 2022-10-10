@@ -1,8 +1,9 @@
 import './App.css';
+import { useState,useEffect } from "react";
 import Login from './component/Login/Login';
 import { Provider } from 'react-redux';
 import store from './Redux/store';
-import {BrowserRouter as Router ,Route , Switch,} from 'react-router-dom';
+import {BrowserRouter as Router ,Route , Switch,useHistory} from 'react-router-dom';
 import PrivateRoute from './component/PrivateRoute';
 import PageHome from './Pages/PageHome/PageHome';
 import PageEmployee from './Pages/PageEmployee/PageEmployee'
@@ -15,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css'  ;
 
 
 function App() {
+  
   return (
     <Provider store={store}>
       <Router>
@@ -22,9 +24,9 @@ function App() {
       <ToastContainer/>
 
         <Switch> 
-          <Route  path='/login'>
-            <Login />
-          </Route>
+          <Route  exact path='/login' component={Login} />
+            {/* <Login /> */}
+          {/* </Route> */}
           <PrivateRoute  component={PageHome} path='/'  exact/>
           <PrivateRoute component={PageEmployee} path='/pageemployee'   exact/>
           <PrivateRoute component={PageAbout} path='/about' exact/>

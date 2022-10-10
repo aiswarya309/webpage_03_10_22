@@ -7,6 +7,12 @@ import {ToastContainer ,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'  ;
 
 function Login(){
+    //  useEffect(() => {
+    //     let isAuth:any = sessionStorage.getItem('AuthValue')
+    //     if(isAuth) {
+    //        history.push('/')
+    //     }
+    //  }, [])
     const [loginData, setLoginData] = useState({
         txtName:'',
         password:''
@@ -33,14 +39,9 @@ function Login(){
     const btnsignup =()=>{
         history.push('/signup')
     }
-    // useEffect(() => {
-    //     let isAuth:any = sessionStorage.getItem('AuthValue')
-    //     if(isAuth && isAuth !== 'undefined') {
-    //        history.push('/')
-    //     }
-    //  }, [])
+   
         return(
-            <div className="container">
+            <div className="container_lgn">
                 <form>
                     <b>Login</b> <br/><br/>
                     Name: <input type="text"  onChange={logintextname} value={txtName}/><br/><br/>
