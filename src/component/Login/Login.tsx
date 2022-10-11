@@ -5,6 +5,7 @@ import { authData } from "../../Redux/App/actionApp";
 import { useDispatch} from 'react-redux';
 import {ToastContainer ,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'  ;
+import LignupMiddle from '../../Redux/Login/loginMiddle'
 
 function Login(){
     //  useEffect(() => {
@@ -22,9 +23,9 @@ function Login(){
     const dispatch =useDispatch()
     const btnClick =() =>{
         if((txtName === 'admin') && (password === 'admin')){
-            // toast.success("succes")
             sessionStorage.setItem("AuthValue","true")
             dispatch(authData())
+            dispatch<any>(LignupMiddle({email:txtName,password:password}))
             history.push('/')
         }else{
             history.push('/login')
