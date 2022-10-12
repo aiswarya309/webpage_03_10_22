@@ -14,4 +14,3 @@ function EmpFullDetails(State:any = initialState,action:any):any{
 }
 
 export default EmpFullDetails
-
