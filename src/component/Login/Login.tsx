@@ -2,34 +2,58 @@ import { useState,useEffect } from "react";
 import './login.css'
 import { useHistory ,Link} from "react-router-dom";
 import { authData } from "../../Redux/App/actionApp";
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import {ToastContainer ,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'  ;
 import LignupMiddle from '../../Redux/Login/loginMiddle'
+import LoginReducer from '../../Redux/Login/loginMiddle'
+import {rootState} from '../../Redux/Reducer'
+
+
 
 function Login(){
+    let history = useHistory()
+    const dispatch =useDispatch()
     //  useEffect(() => {
     //     let isAuth:any = sessionStorage.getItem('AuthValue')
     //     if(isAuth) {
     //        history.push('/')
     //     }
     //  }, [])
+    // const data_lgn:any=useSelector((State:rootState)=>State.LoginReducer.result)
     const [loginData, setLoginData] = useState({
         txtName:'',
         password:''
     })
+    // let [aishu,setaishu]=useState('')
     const {txtName,password}= loginData
-    let history = useHistory()
-    const dispatch =useDispatch()
-    const btnClick =() =>{
-        if((txtName === 'admin') && (password === 'admin')){
-            sessionStorage.setItem("AuthValue","true")
+    const btnClick =()=>{
+        sessionStorage.setItem("AuthValue","true")
             dispatch(authData())
-            dispatch<any>(LignupMiddle({email:txtName,password:password}))
-            history.push('/')
-        }else{
-            history.push('/login')
-        }
+            dispatch<any>(LignupMiddle({email:txtName,password:password,nav:history}))
+
+
+        // dispatch<any>(LignupMiddle({email:txtName,password:password}))
+        // const status=data_lgn.success
+        // console.log("status",status);
+        // if(status === true){
+        //     sessionStorage.setItem("AuthValue","true")
+        //     history.push('/')
+        //     dispatch(authData())
+        //     // setaishu("uuuuuww") 
+        //     // console.log("aishu",aishu)
+        // }
+        // else{
+        //     history.push('/login')
+        // }
+        // if((txtName === 'admin') && (password === 'admin')){
+            // sessionStorage.setItem("AuthValue","true")
+            // dispatch(authData())
+            // dispatch<any>(LignupMiddle({email:txtName,password:password,navi:history}))
+            // history.push('/')
+        // }else{
+        //     history.push('/login')
+        // }
     }
     const logintextname=(val:any)=>{
         setLoginData({...loginData,txtName:val.target.value})

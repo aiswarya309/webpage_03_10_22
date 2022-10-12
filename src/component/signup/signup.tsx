@@ -25,6 +25,7 @@ function Signup(){
     const btnclick=()=>{
         toast("success...")
         dispatch<any>(SignupMiddle({email:emailField,password:passwordField,name:nameField}))
+        console.log("signup data:-",emailField,passwordField,nameField)
         history.push('/login')
         console.log("Signup",user)
         // }
