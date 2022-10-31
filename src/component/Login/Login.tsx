@@ -8,8 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'  ;
 import LignupMiddle from '../../Redux/Login/loginMiddle'
 import LoginReducer from '../../Redux/Login/loginMiddle'
 import {rootState} from '../../Redux/Reducer'
-
-
+import AppReducer from '../../Redux/App/reducerApp'
 
 function Login(){
     let history = useHistory()
@@ -20,19 +19,29 @@ function Login(){
     //        history.push('/')
     //     }
     //  }, [])
-    // const data_lgn:any=useSelector((State:rootState)=>State.LoginReducer.result)
+    // useEffect(()=>{
+    //     localStorage.clear()
+    // },[])
+    let auth:any=useSelector((State:rootState)=>{
+    return State.AppReducer.Authenticate})
+    // console.log("AUTH in login.tsx",auth)
     const [loginData, setLoginData] = useState({
         txtName:'',
         password:''
     })
     // let [aishu,setaishu]=useState('')
     const {txtName,password}= loginData
-    const btnClick =()=>{
-        sessionStorage.setItem("AuthValue","true")
-            dispatch(authData())
+    const btnClick =(e:any)=>{
+        // console.log("LOGIN.tsx localstorage btn",localStorage.getItem("mytoken"))
+        // e.priventDefault()
+        if(txtName.length >5 && password.length >5){
+            // dispatch<any>(authData)
             dispatch<any>(LignupMiddle({email:txtName,password:password,nav:history}))
-
-
+            // sessionStorage.setItem("AuthValue",auth)
+            // console.log("login.tsx auth:-",auth);
+            
+            // console.log("login.tsx session get",sessionStorage.getItem("AuthValue"));
+        }
         // dispatch<any>(LignupMiddle({email:txtName,password:password}))
         // const status=data_lgn.success
         // console.log("status",status);
@@ -55,6 +64,7 @@ function Login(){
         //     history.push('/login')
         // }
     }
+    // console.log("AUTH IN LGN:-",auth)
     const logintextname=(val:any)=>{
         setLoginData({...loginData,txtName:val.target.value})
     }

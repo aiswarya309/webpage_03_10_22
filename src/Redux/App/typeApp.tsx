@@ -1,1 +1,2 @@
 export const AUTHDATA = 'AUTHDATA'
+export const AUTHDATA_FALSE = 'AUTHDATA_FALSE'

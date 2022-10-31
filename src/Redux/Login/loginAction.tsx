@@ -1,16 +1,23 @@
-import {LOGIN , LOGIN_RESULT} from './loginType'
+import {LOGIN , TOKEN,TOKEN_CHNAGE} from './loginType'
+
 
 export const loginAction=(login:any)=>{
     console.log("ACRION DATA:--",login)
     return{
         type :'LOGIN',
-        payload :login
+        payload :{login }
     }
 }
-export const loginResult=(result:any|null)=>{
+export const loginResult=(token:any|null)=>{
     // console.log("ACRION DATA:--",login)
     return{
-        type :'LOGIN_RESULT',
-        payload :result
+        type :TOKEN,
+        payload :token
+    }
+}
+export const tockenChange=()=>{
+    // console.log("ACRION DATA:--",login)
+    return{
+        type :TOKEN_CHNAGE,
     }
 }

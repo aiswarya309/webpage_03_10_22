@@ -8,17 +8,26 @@ import {rootState} from '../../Redux/Reducer'
 import { Dispatch } from 'redux'
 import { actionHeader} from '../../type'
 import Login from '../Login/Login';
+// import {rootState} from '../../Redux/Reducer'
+import AppReducer from '../../Redux/App/reducerApp'
+import { useDispatch, useSelector} from 'react-redux';
+import {authFalse} from '../../Redux/App/actionApp'
+
 type navData={
 	name:string,
 	path:string
 }
 
 function Header(props:any){
-	console.log("Header.js")
+	// console.log("Header.js")
 	let history =useHistory()
+	let dispatch=useDispatch()
 	useEffect(()=>{
 		props.HeaderDispatch()
 	},[]);
+	const auth:any=useSelector((State:rootState)=>{
+		return State.AppReducer.Authenticate})
+	// console.log("auth in headdr component",auth);
 	
     return (
         <header className="common">
@@ -32,7 +41,7 @@ function Header(props:any){
 					<ul>
 						{
 							props.navData && props.navData.map((obj:navData,index:number)=>{
-							return <li key={index} onClick={()=>{history.push(obj.path);if(obj.name === 'Logout'){ sessionStorage.setItem("AuthValue","false");history.push({pathname:'/login'})}}}>{obj.name}</li> 
+							return <li key={index} onClick={()=>{history.push(obj.path);if(obj.name === 'Logout'){ dispatch(authFalse());localStorage.setItem("AuthValue","false");history.push({pathname:'/login'});localStorage.removeItem("mytoken")}}}>{obj.name}</li> 
 							})
 						}
 						

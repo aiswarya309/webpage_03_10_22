@@ -10,25 +10,37 @@ import signupReducer from '../../Redux/signup/signupReducer'
 import {SignupAction} from '../../Redux/signup/signupAction'
 import {rootState} from '../../Redux/Reducer'
 
-
 function Signup(){
     const [emailField, setemailField] = useState('')
     const [passwordField, setPasswordField] = useState('')
     const [nameField, setnameField] = useState('')
-
-
-   
-    const user=useSelector((State:rootState)=>{    console.log("state",State)
-    return State.SignupReducer.user})
+    const user=useSelector((State:rootState)=>{    console.log("state in signup",State)
+    return State.SignupReducer.result})
+    console.log("USER IN SIGNUP",user)
+    // const status=user.data.success
+    console.log("user:-",user)
     const history =useHistory()
     const dispatch=useDispatch()
+    // const {email,password,name}=user
     const btnclick=()=>{
-        toast("success...")
-        dispatch<any>(SignupMiddle({email:emailField,password:passwordField,name:nameField}))
-        console.log("signup data:-",emailField,passwordField,nameField)
-        history.push('/login')
-        console.log("Signup",user)
-        // }
+        if(emailField.length>5 && passwordField.length>5 && nameField.length>5 ){
+            // if(status === false){
+            //     toast("Invalid fields")
+            // }
+            // else{
+            // toast("success...")
+            dispatch<any>(SignupMiddle({email:emailField,password:passwordField,name:nameField,nav:history}))
+            setPasswordField('')
+            setemailField('')
+            setnameField('')
+            // console.log("signup data:-",emailField,passwordField,nameField)
+            // history.push('/login')
+            // console.log("Signup return",user)
+            // }
+        }else{
+            toast("Please fill the field...")
+
+        }
     }
     const signupemail=(e:any)=>{
         setemailField(e.target.value)
