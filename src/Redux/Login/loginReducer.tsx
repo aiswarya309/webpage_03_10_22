@@ -1,19 +1,30 @@
-import {LOGIN,LOGIN_RESULT} from './loginType'
+import {LOGIN,TOKEN,TOKEN_CHNAGE} from './loginType'
 const initialState :any={
     login :{
         email :'',
         password:''
     },
-    result:{}
+    token:''
    
 }
+
+// {...State,
+//     login: {
+//         email: action.payload.login.email,
+//         password: action.payload.login.password
+//     },
+//     result: action.payload.login.result
+// }
+
 function LoginReducer(State = initialState,action:any){
     switch(action.type){
         case LOGIN:
             return{...State.login,email:action.payload.login.email, password:action.payload.login.password};
-        case LOGIN_RESULT:
-                return{...State,result :action.payload};
-            
+        case TOKEN:
+                return{...State,token :action.payload};
+        case TOKEN_CHNAGE:
+            return{...State,token :null };
+                   
             default:
                 return State
     }

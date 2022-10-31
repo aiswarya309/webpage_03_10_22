@@ -6,6 +6,7 @@ import HomeApi from './HomeRedux/reduceHome'
 import EmpFullDetails from '../Redux/EmployeeFullDetails/empReducer'
 import SignupReducer from './signup/signupReducer'
 import LoginReducer from "./Login/loginReducer";
+import AboutDetails from './Description/AboutReducer'
 
 const rootReducer = combineReducers({
     AppReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     HomeApi,
     EmpFullDetails,
     SignupReducer,
-    LoginReducer
+    LoginReducer,
+    AboutDetails
   })
   export type rootState=ReturnType<typeof rootReducer>
   export default rootReducer
