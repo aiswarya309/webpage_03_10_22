@@ -1,48 +1,66 @@
-import { useState ,useEffect} from "react"
-import FeedbackView from "./feedbackView"
-import './feedback.css'
-export type contentHeader ={
-    feedbackName:string,
+import {useState,useEffect } from "react"
+import FeedbackView from './feedbackView'
+import {useSelector} from 'react-redux'
+import { rootState} from '../../Redux/Reducer'
+import { useLocation ,useHistory} from "react-router-dom";
+
+// import EmpFullDetails from '../EmployeeDetails/Employee'
+type typeState={
+    name :string;
+    employeeName :string;
     feedback:string
 }
-const dataFronLs = ()=>{
-    let data = localStorage.getItem('content')
-    if(data){
+const getFeedback:any=()=>{
+    const data=localStorage.getItem('content')
+    if (data){
         return JSON.parse(data)
-    }else{
-        return [];
+    }
+    else{
+        return []
     }
 }
-
 function Feedback(){
-    const [feedbackName,setFeedbackName]=useState<string>('')
-    const [feedback,setFeedback]=useState<string>('')
-    const [content,setContent]=useState<contentHeader[]>(dataFronLs)
-    const feedbackSubmit=()=>{
-        let contents:contentHeader={
-            feedbackName,
-            feedback,
+    const location:any=useLocation();
+    const empData=useSelector((state:rootState)=>{
+        return state.EmpFullDetails.details_emp
+    })
+    const [name , setName]=useState('')
+    const [employeeName , setEmployeeName]=useState(location.state.name)
+    console.log("location.state.name:-",location.state.name);
+    const [feedback , setFeedback]=useState('')
+    const [store,setStore]=useState<typeState[]>(getFeedback)
+    console.log("empData:-",empData);
+    
+    const btnClick=()=>{
+        let stateObject:typeState={
+            name,
+            employeeName,
+            feedback
         }
-        setContent([...content,contents])
-        setFeedbackName('')
+        setStore([...store,stateObject])
+        console.log("Store:-",store)
+        setName('')
+        setEmployeeName(' ')
         setFeedback('')
     }
+    // useEffect(()=>{
+    //     setEmployeeName(empData.name)
+    // },[empData.name])
     useEffect(()=>{
-        localStorage.setItem('content',JSON.stringify(content))
-    },[content]);
-    
-        return(
+        console.log("STORE IN useeffect:-",store)
+        localStorage.setItem('content',JSON.stringify(store))
+    },[store])
+return(
+    <div>
+        <h2>Feedback</h2>
+        Name<input type="text" onChange={(e)=>{setName(e.target.value)}} value={name}/><br/><br/>
+        Employee<input type="text" onChange={(e)=>{setEmployeeName(e.target.value)}} value={employeeName}/><br/><br/>
+        Feedback<input type="text" onChange={(e)=>{setFeedback(e.target.value)}} value={feedback}/><br/><br/>
+        <button onClick={btnClick}>Submit</button>
         <div>
-            <h1>Feedback</h1>
-             <form>
-                   Name <input type="text" onChange={(e)=>setFeedbackName(e.target.value)} value={feedbackName}/><br/><br/>
-                   Feedback<textarea onChange={(e)=>setFeedback(e.target.value)} value={feedback}></textarea><br/><br/>
-                   <button onClick={feedbackSubmit} type="button">Submit</button>
-                </form>
-                <div className="feedback">
-                    <FeedbackView details={content}/>
-                </div>
+            <FeedbackView details={store}/>
         </div>
-    )
+    </div>
+)
 }
 export default Feedback

@@ -23,20 +23,20 @@ const PrivateRoute =({component: Component,...rest }:privateRoute) =>{
     const token = useSelector((State:rootState)=>{
     return State.LoginReducer.token
     })
-    console.log("token private:_",token)
+    // console.log("token private:_",token)
     // useEffect(()=>{
         if(token == null){
             <Redirect to="/login" />
-            console.log("NO TKN")
+            // console.log("NO TKN")
         }else{
-            console.log("TKN")
+            // console.log("TKN")
 
         }
     // },[token])
     // console.log("TOKEN privatrt::--",token);
     
       const local=localStorage.getItem("AuthValue")
-      console.log("prvtroot localStorage:-",local)
+    //   console.log("prvtroot localStorage:-",local)
     //   if()
 
     return(

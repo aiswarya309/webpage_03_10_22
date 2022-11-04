@@ -18,7 +18,7 @@ function AboutMiddle():any{
     return function(dispatch:any){
         // setTimeout(()=>{
             const token=localStorage.getItem("mytoken")
-            console.log(" #######aboutmiddle.tsx localStorage.getItem...",token)
+            // console.log(" #######aboutmiddle.tsx localStorage.getItem...",token)
             axios.get(`${process.env.REACT_APP_BACKEND}/auth/about`,{headers:{'authorization':"Bearer " + token}})
         .then(response=>{
             // console.log("RESPONSE.DATA ABOUTMIDDLE",response.data);
@@ -27,7 +27,7 @@ function AboutMiddle():any{
 
             if(status == false){
 				localStorage.setItem("AuthValue","false")
-				console.log(" *************Description.tsx status == false")
+				// console.log(" *************Description.tsx status == false")
 				// localStorage.removeItem("mytoken")
 				localStorage.clear()
                 dispatch(tockenChange())
@@ -40,7 +40,7 @@ function AboutMiddle():any{
 
         })
         .catch(error => {
-            console.log(" about_middle.tsx error in catch",error)
+            // console.log(" about_middle.tsx error in catch",error)
             return error;
           });
         // },1000)

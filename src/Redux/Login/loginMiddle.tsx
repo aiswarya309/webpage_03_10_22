@@ -14,7 +14,7 @@ function LignupMiddle(login:any){
             // console.log("Axxios logMiddle IN");
             
         // dispatch(loginResult(response.data))
-        console.log("response in loggin middle:--",response)
+        // console.log("response in loggin middle:--",response)
         const status=response.data.success
         const token=response.data.token
         // console.log("Token:-",token)
@@ -28,11 +28,11 @@ function LignupMiddle(login:any){
             dispatch(loginResult(token))
             toast("success")
             localStorage.setItem("mytoken",token)
-            console.log("LoginMiddle localStorage.getItem",localStorage.getItem("mytoken"));
+            // console.log("LoginMiddle localStorage.getItem",localStorage.getItem("mytoken"));
             login.nav.push('/')
             
         }else{
-            console.log("LignupMiddle status-false")
+            // console.log("LignupMiddle status-false")
             // localStorage.setItem("AuthValue","false")
             toast("Login failed")
             // dispatch(tockenChange())
