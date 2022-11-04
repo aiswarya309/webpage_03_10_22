@@ -6,13 +6,21 @@ import { rootState } from "../../Redux/Reducer";
 
 function Home(){
     let [index,setIndex]=useState(0);
-    const image = useSelector((State:rootState)=>{
+    const images = useSelector((State:rootState)=>{
         return State.HomeApi.home_data
     })
+    // console.log("image slider:-",images);
+    // const {id,image}=image
     const dispatch = useDispatch()
     useEffect(()=>{
     dispatch<any>(HomeReduxApi())
-},[])
+    },[])
+    const url="http://localhost:5000/slider/"
+    // const envUrl=process.env.SLIDER
+    // console.log("envUrl:-",envUrl);
+    // console.log("url:-",url);
+    let image=images.map((img:any)=> url +img.image)
+    // console.log("**********img",image)
   const pre = () => {
     if(index == 0){
         setIndex(image.length - 1)
