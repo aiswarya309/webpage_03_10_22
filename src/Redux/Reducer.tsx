@@ -7,7 +7,7 @@ import EmpFullDetails from '../Redux/EmployeeFullDetails/empReducer'
 import SignupReducer from './signup/signupReducer'
 import LoginReducer from "./Login/loginReducer";
 import AboutDetails from './Description/AboutReducer'
-
+import feedbackReducer from "./Feedback/feedbackReducer";
 const rootReducer = combineReducers({
     AppReducer,
     EmpDetails,
@@ -16,7 +16,8 @@ const rootReducer = combineReducers({
     EmpFullDetails,
     SignupReducer,
     LoginReducer,
-    AboutDetails
+    AboutDetails,
+    feedbackReducer
   })
   export type rootState=ReturnType<typeof rootReducer>
   export default rootReducer
