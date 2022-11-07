@@ -31,7 +31,7 @@ return(
                     <p>{empfulldata.place}</p>
                     <p>{empfulldata.state}</p>
                     <p>{empfulldata.pin}</p>
-                    <button onClick={()=>{history.push({pathname:'/feedback',state:{name:empfulldata.name}});console.log("empfulldata.id}",empfulldata.id)} }>Feedback</button>
+                    <button onClick={()=>{history.push({pathname:'/feedback',state:{id:empfulldata.id,name:empfulldata.name}});console.log("empfulldata.id}",empfulldata.id)} }>Feedback</button>
             </div>
     </div>
 )

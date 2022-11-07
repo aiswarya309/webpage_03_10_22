@@ -1,6 +1,6 @@
 type feedbackData={
     name:string,
-    employeeName:string,
+    empName:string,
     feedback:string
 }
 function FeedbackView({details}:any){
@@ -8,7 +8,7 @@ function FeedbackView({details}:any){
         console.log("data:-",data)
       return <div key={index}>
             <p>{data.name}</p>
-            <p>{data.employeeName}</p>
+            <p>{data.empName}</p>
             <p>{data.feedback}</p><hr/>
         </div>
     })
