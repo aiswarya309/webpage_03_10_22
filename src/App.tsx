@@ -9,6 +9,8 @@ import PageEmployee from './Pages/PageEmployee/PageEmployee'
 import PageAbout from './Pages/PageAbout/PageAbout'
 import PageFeedback from './Pages/pageFeedback/pageFeedback'
 import PageEmployeeFullDetails from './Pages/pageEmployeeFullDetails/pageEmployeeFullDetails'
+import PageFeedbackAdd from './Pages/PageFeedbackAdd/pageFeedbackAdd'
+import PageFeedbackMore from './Pages/PageFeedbackMore/pageFeedbackMore'; 
 import Signup from './component/signup/signup'
 import {ToastContainer ,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'  ;
@@ -31,6 +33,8 @@ function App() {
           <PrivateRoute component={PageFeedback} path='/feedback'  exact/>
           <Route path='/pageEmployeeFullDetails' component={PageEmployeeFullDetails}/>
           <Route path='/signup' component={Signup}/>
+          <Route path='/pageFeedbackAdd' component={PageFeedbackAdd}/>
+          <Route path='/pageFeedbackMore' component={PageFeedbackMore}/>
         </Switch>
       </div>
     </Router>

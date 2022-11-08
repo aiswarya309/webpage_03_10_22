@@ -2,14 +2,14 @@
     background-color:#336699;
 }
 .container_feedback{
-    padding: 50px;
+    padding: 36px;
     background-color: #336699;
     width: 202px;
     justify-content: center;
     position: absolute;
     top: 150px;
     right: 40%;
-    margin-top: 600px;
+    margin-top: 76px;
 }
 .feedback_view{
     padding: 50px;
@@ -25,4 +25,8 @@
 .btnLogin_feedback{
     background-color: rgba(77, 58, 83, 0.048);
     padding: 50px;
+    border-spacing: 30px;
+}
+.feedback_select{
+    width:180px
 }
