@@ -39,7 +39,7 @@ function Home(){
         <div >
             <img src={image[index]} alt="Image is not loaded" id="img1"/> <br/><br/>
             <button onClick={pre}>Previous Image</button>
-            <button onClick={next}>Next Image</button>
+            <button onClick={next}>Next Image</button><br/><br/>
         </div>
     )
 }
