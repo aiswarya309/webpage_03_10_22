@@ -30,3 +30,13 @@
 .feedback_select{
     width:180px
 }
+.employee{
+    display :flex;
+    justify-content: space-around;
+    /* width: 200px; */
+}
+.child{
+    width: 311px;
+    height: 173px;
+    background-color: #336699;
+}

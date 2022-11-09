@@ -7,6 +7,8 @@ import { useLocation ,useHistory} from "react-router-dom";
 import feedbackMiddle from '../../Redux/Feedback/feedbackMiddle'
 import {feedbackAction} from '../../Redux/Feedback/feedbackAction'
 import feedbackGet from '../../Redux/Feedback/feedbackGet'
+import 'react-toastify/dist/ReactToastify.css'  ;
+import { toast } from "react-toastify"
 
 // import EmpFullDetails from '../EmployeeDetails/Employee'
 type typeState={
@@ -26,6 +28,7 @@ const getFeedback:any=()=>{
 function FeedbackAdd(){
     const dispatch=useDispatch()
     const location:any=useLocation();
+    const history:any=useHistory()
     const empData=useSelector((state:rootState)=>{
         return state.EmpFullDetails.details_emp
     })
@@ -55,6 +58,8 @@ function FeedbackAdd(){
         setName('')
         setEmployeeName(' ')
         setFeedback('')
+        toast("Feedback Added")
+        history.push('/feedback')
     }
     useEffect(()=>{
         dispatch<any>(feedbackGet())

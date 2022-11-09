@@ -13,40 +13,34 @@ function FeedbackMore(){
         console.log("feedbackResult:-",feedbackResult);
         const id= location.state.id
         // console.log("id feedback more:",id);
-        
-    console.log("location.state.id:-",location.state.id);
+        // console.log("location.state.id:-",location.state.id);
                 
     useEffect(()=>{
-        console.log("FeedbackMore");
-        
+        // console.log("FeedbackMore");
         dispatch<any>(feedbackGet())
     },[])
     return(
         <div>
-            <p>FeedbackMore</p>
+            <h2>More Feedback</h2>
             {
                 feedbackResult && feedbackResult.map((data:any,index:number)=>{
-                    // console.log();
-                    
-                    feedbackResult.sort((a:any,b:any)=>b.id-a.id)
+                    // feedbackResult.sort((a:any,b:any)=>b.id-a.id)
                     // console.log("feedbackResult^^",feedbackResult);
                     const dbid:any=[data.id]
                     // console.log("id##",dbid);
                     if(id == data.emp_id){
-                        console.log("gata##$%^",data);
-                        let empFeedback=[data]
-                        
+                        // console.log("gata##$%^",data);
+                        // let empFeedback=[data]
                         // console.log("arrry",arrry[0])
-                        const last=empFeedback[0]
-                        console.log("last",last);
-                        
-                        console.log("id in more",data.id);
+                        // const last=empFeedback[0]
+                        // console.log("last",last);
+                        // console.log("id in more",data.id);
                         // console.log("feedbackResult^^",feedbackResult);
                         // const dbid:any=[data.id]
                         // console.log("id##",dbid);
                         // console.log("data.id##",data.id);
+                        // <p>#####{data.empName}</p>
                     return <div key={index}>
-                        <p>{last.feedback}</p>
                         <p>{data.name} :- {data.feedback}</p>
                     </div>
                         }

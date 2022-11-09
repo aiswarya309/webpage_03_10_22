@@ -7,7 +7,7 @@ function feedbackMiddle(data:any){
         const id=data.id
         console.log("id",id);
         
-        axios.post(`${process.env.REACT_APP_BACKEND}/auth/feedbackPost`,{id:data.id,name:data.name,empName:data.empName,feedback:data.feedback})
+        axios.post(`http://localhost:5000/auth/feedbackPost`,{id:data.id,name:data.name,empName:data.empName,feedback:data.feedback})
         .then(res=>{
             dispatch(feedbackGet())
             console.log("res",res)

@@ -9,7 +9,7 @@ import {tockenChange} from '../../Redux/Login/loginAction'
 function LignupMiddle(login:any){
     return function(dispatch:any){
         // console.log("Login middel IN")
-        axios.post(`${process.env.REACT_APP_BACKEND}/auth/login`,{email:login.email,password:login.password})
+        axios.post(`http://localhost:5000/auth/login`,{email:login.email,password:login.password})
         .then(response=>{
             // console.log("Axxios logMiddle IN");
             

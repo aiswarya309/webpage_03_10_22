@@ -3,7 +3,9 @@ import {useSelector,useDispatch} from 'react-redux'
 import { rootState} from '../../Redux/Reducer'
 import { useLocation ,useHistory} from "react-router-dom";
 import EmpAPI from "../../Redux/EmployeeDetails/empAPI";
-
+import feedbackEmpIdMiddle from '../../Redux/Feedback/feedbackEmpIdMiddle'
+import feedbackGet from '../../Redux/Feedback/feedbackGet'
+import './feedback.css'
 
 
 function Feedback(){
@@ -12,7 +14,11 @@ function Feedback(){
     const empData=useSelector((state:rootState)=>{
         return state.EmpDetails.emp_details})
         console.log("empData feedback:-",empData);
-    // const btnMore=()=>{
+    const feedbackResult = useSelector((state:rootState)=>{
+        return state.feedbackReducer.getFeedback})
+        // console.log("feedbackResult ###:-",feedbackResult);
+    
+        // const btnMore=()=>{
     //     history.push('/pageFeedbackMore')
     // }
     // const btnAdd=()=>{
@@ -22,21 +28,39 @@ function Feedback(){
     // console.log("data.id feedback:-",data.id);
     useEffect(()=>{
         dispatch<any>(EmpAPI())
+        dispatch<any>(feedbackGet())
     },[])
         return(
-            <div>
+            <div className="employee">
                 {
-                    
                     empData && empData.map((data:any,index:number)=>{
+                        // feedbackResult.sort((a:any,b:any)=>b.id-a.id)
+                        let last:any=[]
+                        feedbackResult && feedbackResult.map((result:any,index:any)=>{
+                            if(data.id == result.emp_id){
+                                let empFeedback=[result]
+                                console.log("result",empFeedback);
+                                last=empFeedback[0]
+                                console.log("last",last);
 
-                       return <div key={index} >
+                            }
+                        })
+                        // feedbackResult.sort((a:any,b:any)=>b.id-a.id)
+                        // // console.log("data.id",data.id);
+                        // if(data.id){
+                        //     let empFeedback=[data]
+                        //     console.log("data......",data);
+                        //     let last:any =empFeedback[0]
+                        //     console.log("last in feedback:-",last);
+                        //     }
+                        const empId:any=data.id
+                        // dispatch<any>(feedbackEmpIdMiddle({id:empId}))
+                                 
+                       return <div key={index} className="child">
                                 <h3>{data.name}</h3>
                                 <p>ID:{data.id}</p>
-                               {/* <div> */}
-                                 <p>opop</p>
-                                {/* </div> */}
-                                
-                                 <button onClick={()=>{history.push({pathname:'/pageFeedbackMore',state:{id:data.id}});console.log("data.id",data.id);
+                                 <p>{last.feedback}</p>
+                                 <button onClick={()=>{history.push({pathname:'/pageFeedbackMore',state:{id:data.id,name:data.name}});console.log("data.id",data.id);
                                  }}>More</button><button onClick={()=>{history.push({pathname:'/pageFeedbackAdd',state:{id:data.id,name:data.name}});console.log("data.id",data.id);}}>Add</button>
                              </div>
                     })
