@@ -16,7 +16,7 @@ function Employee(){
     },[])
     return(
         <div>
-            <h1>Employee Details</h1>
+            <h1 className="headingEmp2">Employee Details</h1>
             <div className="container">
                 {
                     empdata && empdata.map((data:data,index:number)=>{

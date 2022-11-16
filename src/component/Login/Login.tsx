@@ -77,12 +77,12 @@ function Login(){
    
         return(
             <div className="container_lgn">
-                <form>
+                <form >
                     <b>Login</b> <br/><br/>
-                    Name: <input type="text"  onChange={logintextname} value={txtName}/><br/><br/>
-                    Password: <input type="password" onChange={loginpassword} value={password}/><br/><br/>
-                    <button type="button" onClick={btnClick}>Login</button>
-                    <button type="button" onClick={btnsignup}>SignUp</button>
+                    Name: <input className="txt" type="text"  onChange={logintextname} value={txtName}/><br/><br/>
+                    Password: <input className="txt" type="password" onChange={loginpassword} value={password}/><br/><br/>
+                    <button className="btnLogin_lgn" type="button" onClick={btnClick}>Login</button>
+                    <button className="btnLogin_lgn" type="button" onClick={btnsignup}>SignUp</button>
                 </form>
 
             </div>

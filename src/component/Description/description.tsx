@@ -6,7 +6,7 @@ import { rootState } from "../../Redux/Reducer";
 import { useHistory ,Link,Redirect} from "react-router-dom";
 // import {authFalse} from '../../Redux/App/actionApp'
 // import { Redirect } from "react-router-dom";
-
+import './DescriptionStyle.css'
 
 // import AboutDetails from '../../Redux/Description/AboutReducer'
 function Details(){
@@ -57,8 +57,8 @@ function Details(){
 			{
 				data && data.map((value:any,index:any)=>{
 					return <div key={index}>
-						<h2>{value.title}</h2>
-						<p>{value.content}</p>
+						<h2 className="about">{value.title}</h2>
+						<p className="aboutPara">{value.content}</p>
 					</div>
 				})
 				

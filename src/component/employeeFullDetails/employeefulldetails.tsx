@@ -5,6 +5,7 @@ import {rootState} from '../../Redux/Reducer'
 import { useLocation ,useHistory} from "react-router-dom";
 import FeedbackView from '../Feedback/feedbackView'
 import feedbackGet from '../../Redux/Feedback/feedbackGet'
+import './employeeFullDetails.css'
 
 type newType={
     name:string,
@@ -34,10 +35,10 @@ function EmployeeFullDetails(){
     },[])
 return(
     <div>
-        <h1>Employee Data</h1>
-            <div>
-                    <h3>{empfulldata.name}</h3>
-                    <p>{empfulldata.id}</p>
+        <h1 className='dataHeading'>Employee Data</h1>
+            <div className='dataField'>
+                    <h3><u>{empfulldata.name}</u></h3>
+                    <p>EmpID : {empfulldata.id}</p>
                     <p>{empfulldata.place}</p>
                     <p>{empfulldata.state}</p>
                     <p>{empfulldata.pin}</p>
@@ -45,9 +46,9 @@ return(
 
                     {/* <button onClick={()=>{history.push({pathname:'/feedback',state:{id:empfulldata.id,name:empfulldata.name}});console.log("empfulldata.id}",empfulldata.id)} }>Feedback</button> */}
             </div>
-            <div>
+            {/* <div>
                 <FeedbackView details={feedbackResult} id_emp={empfulldata.id}/>
-            </div>
+            </div> */}
     </div>
 )
 }

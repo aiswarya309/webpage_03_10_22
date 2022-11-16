@@ -9,6 +9,7 @@ import {feedbackAction} from '../../Redux/Feedback/feedbackAction'
 import feedbackGet from '../../Redux/Feedback/feedbackGet'
 import 'react-toastify/dist/ReactToastify.css'  ;
 import { toast } from "react-toastify"
+import './feedbackAdd.css'
 
 // import EmpFullDetails from '../EmployeeDetails/Employee'
 type typeState={
@@ -25,7 +26,7 @@ const getFeedback:any=()=>{
         return []
     }
 }
-function FeedbackAdd(){
+function FeedbackAdd({id,emp}:any){
     const dispatch=useDispatch()
     const location:any=useLocation();
     const history:any=useHistory()
@@ -37,8 +38,8 @@ function FeedbackAdd(){
         console.log("feedbackResult:-",feedbackResult);
         
     const [name , setName]=useState('')
-    const [employeeName , setEmployeeName]=useState(location.state.name)
-    const [empId,setEmpId]=useState(location.state.id)
+    const [employeeName , setEmployeeName]=useState(emp)
+    const [empId,setEmpId]=useState(id)
     // console.log("location.state.name:-",location.state.name);
     const [feedback , setFeedback]=useState('')
     const [store,setStore]=useState<typeState[]>(getFeedback)
@@ -75,7 +76,7 @@ function FeedbackAdd(){
 return(
     <div >
         <div className="container_feedback">
-            <h2>Feedback</h2>
+            {/* <h2>Feedback</h2> */}
             Name<input type="text" onChange={(e)=>{setName(e.target.value)}} value={name}/><br/><br/>
             Employee<input type="text" onChange={(e)=>{setEmployeeName(e.target.value)}} value={employeeName}/><br/><br/>
             Feedback<input type="text" onChange={(e)=>{setFeedback(e.target.value)}} value={feedback}/><br/><br/>

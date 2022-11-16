@@ -6,7 +6,7 @@ import Footer from "../../component/Footer/footer";
     return(
         <div>
             <Header/>
-            <Home/>
+            {/* <Home/> */}
             <EmployeeFullDetails/>
             <Footer/>
         </div>

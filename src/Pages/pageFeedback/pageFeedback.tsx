@@ -4,7 +4,7 @@ import Feedback from '../../component/Feedback/feedback'
 function PageFeedback(){
     return(
         <div>
-            <Home/>
+            {/* <Home/> */}
             <Feedback/>
         </div>
     )
