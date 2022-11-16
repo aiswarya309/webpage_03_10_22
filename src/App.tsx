@@ -14,6 +14,9 @@ import PageFeedbackMore from './Pages/PageFeedbackMore/pageFeedbackMore';
 import Signup from './component/signup/signup'
 import {ToastContainer ,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'  ;
+import FeedbackPopup from './component/FeebackAdd/feedbackPopup';
+import ReplyComponent from './component/Reply/replyComponent'
+import ReplyPopup from './component/Reply/reply'
 
 
 function App() {
@@ -35,6 +38,9 @@ function App() {
           <Route path='/signup' component={Signup}/>
           <Route path='/pageFeedbackAdd' component={PageFeedbackAdd}/>
           <Route path='/pageFeedbackMore' component={PageFeedbackMore}/>
+          <Route path='/feedbackPopup' component={FeedbackPopup}/>
+          <Route path='/replyComponent' component={ReplyComponent}/>
+          <Route path='/replyPopup' component={ReplyPopup}/>
         </Switch>
       </div>
     </Router>

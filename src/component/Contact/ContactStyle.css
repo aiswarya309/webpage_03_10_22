@@ -1,3 +1,15 @@
 .contact{
     justify-content: center;
+    border: 1px solid rgb(41, 35, 70);
+    width: 458px;
+    margin-left: 373px;
+    height: 233px;
+    padding-top: 34px;
+}
+.contactHeading{
+    color: #192f44;
+}
+.label{
+    color: #29415a;
+    /* padding-left: 100px; */
 }

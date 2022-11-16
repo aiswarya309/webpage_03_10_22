@@ -8,6 +8,7 @@ import SignupReducer from './signup/signupReducer'
 import LoginReducer from "./Login/loginReducer";
 import AboutDetails from './Description/AboutReducer'
 import feedbackReducer from "./Feedback/feedbackReducer";
+import replayReducer from './Reply/replyReducer'
 const rootReducer = combineReducers({
     AppReducer,
     EmpDetails,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     SignupReducer,
     LoginReducer,
     AboutDetails,
-    feedbackReducer
+    feedbackReducer,
+    replayReducer
   })
   export type rootState=ReturnType<typeof rootReducer>
   export default rootReducer

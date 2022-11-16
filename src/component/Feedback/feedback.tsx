@@ -3,10 +3,12 @@ import {useSelector,useDispatch} from 'react-redux'
 import { rootState} from '../../Redux/Reducer'
 import { useLocation ,useHistory} from "react-router-dom";
 import EmpAPI from "../../Redux/EmployeeDetails/empAPI";
-import feedbackEmpIdMiddle from '../../Redux/Feedback/feedbackEmpIdMiddle'
+// import feedbackEmpIdMiddle from '../../Redux/Feedback/feedbackEmpIdMiddle'
 import feedbackGet from '../../Redux/Feedback/feedbackGet'
 import './feedback.css'
-
+import FeedbackPopup from "../FeebackAdd/feedbackPopup";
+import avatar from '../../Assets/Images/dan5276bb68cda93.png'
+import FeedbackAdd from '../FeebackAdd/feedbackAdd'
 
 function Feedback(){
     const history =useHistory()
@@ -32,17 +34,20 @@ function Feedback(){
     },[])
         return(
             <div className="employee">
+                <div className="childd">
                 {
                     empData && empData.map((data:any,index:number)=>{
                         // feedbackResult.sort((a:any,b:any)=>b.id-a.id)
                         let last:any=[]
                         feedbackResult && feedbackResult.map((result:any,index:any)=>{
+                            const results=result
+                            // console.log("RESULT****",result);
+                            
                             if(data.id == result.emp_id){
                                 let empFeedback=[result]
-                                console.log("result",empFeedback);
+                                // console.log("result",empFeedback);
                                 last=empFeedback[0]
-                                console.log("last",last);
-
+                                // console.log("last",last);
                             }
                         })
                         // feedbackResult.sort((a:any,b:any)=>b.id-a.id)
@@ -55,16 +60,27 @@ function Feedback(){
                         //     }
                         const empId:any=data.id
                         // dispatch<any>(feedbackEmpIdMiddle({id:empId}))
-                                 
-                       return <div key={index} className="child">
-                                <h3>{data.name}</h3>
-                                <p>ID:{data.id}</p>
-                                 <p>{last.feedback}</p>
-                                 <button onClick={()=>{history.push({pathname:'/pageFeedbackMore',state:{id:data.id,name:data.name}});console.log("data.id",data.id);
-                                 }}>More</button><button onClick={()=>{history.push({pathname:'/pageFeedbackAdd',state:{id:data.id,name:data.name}});console.log("data.id",data.id);}}>Add</button>
+                        return<div key={index} className="child2">        
+                        <div  className="child1">
+                            <div className="imgDiv">
+                            <img className="img" src={avatar} alt="The image is not loaded" />
+                                <h3 className="para">{data.name}</h3>
+                            </div>
+                                <p className="paraId">EmpID  :   {data.id}</p>
+                                 <p className="paraFeedback">{last.feedback}</p>
+                                 <div className="btnMoreAdd">
+                                 <button className="button1" onClick={()=>{history.push({pathname:'/pageFeedbackMore',state:{id:data.id,name:data.name,f_id:last.id,f_empId:last.emp_id}});console.log("data.id",data.id);
+                                 }}>MORE FEEDBACK</button>
+                                 <FeedbackPopup className="button1">
+                                    <FeedbackAdd id={data.id} emp={data.name}/>
+                                 </FeedbackPopup>
+                                 </div>
+                                {/* <button className="button1" onClick={()=>{history.push({pathname:'/pageFeedbackAdd',state:{id:data.id,name:data.name}});console.log("data.id",data.id);}}>Add Feedback</button> */}
                              </div>
+                    </div>
                     })
                 }
+                </div>
             </div>
         )
 }

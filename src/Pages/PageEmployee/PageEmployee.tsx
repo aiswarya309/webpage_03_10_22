@@ -4,7 +4,7 @@ import Employee from '../../component/EmployeeDetails/Employee'
 function PageEmployee(){
     return(
         <div>
-            <Home/>
+            {/* <Home/> */}
             <Employee/>
         </div>
     )

@@ -38,8 +38,8 @@ function Home(){
     return(
         <div >
             <img src={image[index]} alt="Image is not loaded" id="img1"/> <br/><br/>
-            <button onClick={pre}>Previous Image</button>
-            <button onClick={next}>Next Image</button><br/><br/>
+            <button className="buttonSlider" onClick={pre}>Previous Image</button>
+            <button className="buttonSlider" onClick={next}>Next Image</button><br/><br/>
         </div>
     )
 }

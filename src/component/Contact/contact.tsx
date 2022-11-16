@@ -1,5 +1,6 @@
 import {useState} from "react";
 import './contact'
+import './ContactStyle.css'
 
 function Contact(){
     const [list , setList]=useState({
@@ -21,9 +22,9 @@ function Contact(){
 
     return(
             <div >
-                <div><h2>Contact Us</h2></div>
-                <div>
-                    <form>
+                <div><h2 className="contactHeading">Contact Us</h2></div>
+                <div className="contact">
+                    <form className="label"> 
                     Name: <input type="text" onChange={(val)=>setList({...list,firsrName:val.target.value})} value={firsrName}/><br/><br/>
                     Phno: <input type="text" onChange={(val)=>setList({...list,phon:val.target.value})} value={phon}/><br/><br/>
                     Place: <input type="text" onChange={(val)=>setList({...list,place:val.target.value})} value={place}/><br/><br/>

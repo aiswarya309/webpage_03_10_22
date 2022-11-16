@@ -41,7 +41,7 @@ function Header(props:any){
 					<ul>
 						{
 							props.navData && props.navData.map((obj:navData,index:number)=>{
-							return <li key={index} onClick={()=>{history.push(obj.path);if(obj.name === 'Logout'){ dispatch(authFalse());localStorage.setItem("AuthValue","false");history.push({pathname:'/login'});localStorage.removeItem("mytoken")}}}>{obj.name}</li> 
+							return <li className='name' key={index} onClick={()=>{history.push(obj.path);if(obj.name === 'Logout'){ dispatch(authFalse());localStorage.setItem("AuthValue","false");history.push({pathname:'/login'});localStorage.removeItem("mytoken")}}}>{obj.name}</li> 
 							})
 						}
 						

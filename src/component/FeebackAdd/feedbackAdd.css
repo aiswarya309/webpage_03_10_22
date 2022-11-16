@@ -1,0 +1,10 @@
+.container_feedback{
+    width: 207px;
+}
+.buttonPop{
+    background-color: #ffffff;
+         padding: 5px;  
+         margin: 9px;  
+         border: 2px solid #bec5cc;
+         border-radius: 8px;   
+}
