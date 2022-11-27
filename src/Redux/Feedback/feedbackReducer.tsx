@@ -1,7 +1,7 @@
 import { FEEDBACK,FEEDBACK_EMPID } from "./FeedbackType";
 const initialState={
     getFeedback:[],
-    result:{}
+    result:[]
 }
 function feedbackReducer(state:any=initialState,action:any){
 switch(action.type){

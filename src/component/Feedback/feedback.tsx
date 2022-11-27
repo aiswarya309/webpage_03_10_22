@@ -15,7 +15,6 @@ function Feedback(){
     const dispatch=useDispatch()
     const empData=useSelector((state:rootState)=>{
         return state.EmpDetails.emp_details})
-        console.log("empData feedback:-",empData);
     const feedbackResult = useSelector((state:rootState)=>{
         return state.feedbackReducer.getFeedback})
         // console.log("feedbackResult ###:-",feedbackResult);
@@ -40,47 +39,41 @@ function Feedback(){
                         // feedbackResult.sort((a:any,b:any)=>b.id-a.id)
                         let last:any=[]
                         feedbackResult && feedbackResult.map((result:any,index:any)=>{
-                            const results=result
+                            // const results=result
                             // console.log("RESULT****",result);
                             
                             if(data.id == result.emp_id){
+                                // let feedbackId=result.id
+                                // console.log("feedbackId",feedbackId);
                                 let empFeedback=[result]
-                                // console.log("result",empFeedback);
                                 last=empFeedback[0]
+                                // last =feedbackResult.slice(-1)
                                 // console.log("last",last);
+                                // console.log("feedbackResult data.id",result.id)
                             }
                         })
-                        // feedbackResult.sort((a:any,b:any)=>b.id-a.id)
-                        // // console.log("data.id",data.id);
-                        // if(data.id){
-                        //     let empFeedback=[data]
-                        //     console.log("data......",data);
-                        //     let last:any =empFeedback[0]
-                        //     console.log("last in feedback:-",last);
-                        //     }
-                        const empId:any=data.id
-                        // dispatch<any>(feedbackEmpIdMiddle({id:empId}))
+                       
                         return<div key={index} className="child2">        
-                        <div  className="child1">
-                            <div className="imgDiv">
-                            <img className="img" src={avatar} alt="The image is not loaded" />
-                                <h3 className="para">{data.name}</h3>
-                            </div>
-                                <p className="paraId">EmpID  :   {data.id}</p>
-                                 <p className="paraFeedback">{last.feedback}</p>
-                                 <div className="btnMoreAdd">
-                                 <button className="button1" onClick={()=>{history.push({pathname:'/pageFeedbackMore',state:{id:data.id,name:data.name,f_id:last.id,f_empId:last.emp_id}});console.log("data.id",data.id);
-                                 }}>MORE FEEDBACK</button>
-                                 <FeedbackPopup className="button1">
-                                    <FeedbackAdd id={data.id} emp={data.name}/>
-                                 </FeedbackPopup>
-                                 </div>
-                                {/* <button className="button1" onClick={()=>{history.push({pathname:'/pageFeedbackAdd',state:{id:data.id,name:data.name}});console.log("data.id",data.id);}}>Add Feedback</button> */}
-                             </div>
+                            <div  className="child1">
+                                <div className="imgDiv">
+                                <img className="img" src={avatar} alt="The image is not loaded" />
+                                    <h3 className="para">{data.name}</h3>
+                                </div>
+                                    <p className="paraId">EmpID  :   {data.id}</p>
+                                    <p className="paraFeedback">{last.feedback}</p>
+                                    <div className="btnMoreAdd">
+                                    <button className="button1" onClick={()=>{history.push({pathname:'/pageFeedbackMore',state:{id:data.id,name:data.name,f_id:last.id,f_empId:last.emp_id}});
+                                    }}>MORE FEEDBACK</button>
+                                    <FeedbackPopup className="button1">
+                                        <FeedbackAdd id={data.id} emp={data.name}/>
+                                    </FeedbackPopup>
+                                    </div>
+                                    {/* <button className="button1" onClick={()=>{history.push({pathname:'/pageFeedbackAdd',state:{id:data.id,name:data.name}});console.log("data.id",data.id);}}>Add Feedback</button> */}
+                                </div>
+                        </div>
+                        })
+                    }
                     </div>
-                    })
-                }
-                </div>
             </div>
         )
 }

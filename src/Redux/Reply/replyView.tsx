@@ -5,12 +5,16 @@ import {replyAction} from './replyAction'
 function replyView(view:any):any{
     return function(dispatch:any){
         const token=localStorage.getItem("mytoken")
-        console.log("f_id':view.f_id,'f_empId':view.f_empId",view.f_id);
+        // console.log("f_id':view.f_id,'f_empId':view.f_empId",view.id,view.f_empId);
+        const feedbackId=view.id
         
-        axios.get(`http://localhost:5000/auth/replyView`,{headers:{'authorization':"Bearer " + token},params:{'f_id':view.f_id,'f_empId':view.f_empId}})
+        axios.get(`http://localhost:5000/auth/replyView`,{headers:{'authorization':"Bearer " + token},params:{'f_id':view.id,'f_empId':view.f_empId}})
         .then((res)=>{
-            dispatch(replyAction(res.data.result))
-            console.log("replyView@#$%^&*&^%$#$%^&:-",res.data.result);
+            const result=res.data.result
+            // console.log("reply middle:::--",result);
+            
+            dispatch(replyAction({reply:result,feedbackId:feedbackId}))
+            // console.log("replyView@#$%^&*&^%$#$%^&:-",res.data.result);
             
         })
     }
