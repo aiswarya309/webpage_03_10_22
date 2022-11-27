@@ -44,7 +44,6 @@ function Header(props:any){
 							return <li className='name' key={index} onClick={()=>{history.push(obj.path);if(obj.name === 'Logout'){ dispatch(authFalse());localStorage.setItem("AuthValue","false");history.push({pathname:'/login'});localStorage.removeItem("mytoken")}}}>{obj.name}</li> 
 							})
 						}
-						
 					</ul>
 				</nav>
 			</div>

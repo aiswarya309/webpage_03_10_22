@@ -25,7 +25,6 @@ function App() {
       <Router>
       <div className="App">
       <ToastContainer/>
-
         <Switch> 
           <Route  path='/login'>
             <Login />

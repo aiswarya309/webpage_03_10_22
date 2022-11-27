@@ -10,9 +10,12 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import '../FeedbackMore/feedbackMore.css'
 import {useSelector,useDispatch} from 'react-redux'
 import replyPost from '../../Redux/Reply/replyPost'
+import ReplayView from './replayView'
+import replyView from '../../Redux/Reply/replyView'
 
 
 export default function ReplyPopup({idEmp,f_id}:any) {
+  // console.log("!!!!",idEmp,f_id)
   const [reply,setReply]=useState<string | any>('')
   const dispatch:any =useDispatch()
   const [open, setOpen] = React.useState(false);
@@ -26,8 +29,8 @@ export default function ReplyPopup({idEmp,f_id}:any) {
   };
   const btnReply=()=>{
     dispatch(replyPost({id:idEmp,reply:reply,f_id:f_id}))
+    // dispatch(replyView({id:idEmp,f_empId:f_id}))
     setReply('')
-
   }
 
   return (
@@ -54,6 +57,7 @@ export default function ReplyPopup({idEmp,f_id}:any) {
             variant="standard"
           />
         </DialogContent>
+        {/* <ReplayView replyEmpId={idEmp} replyFid={f_id}/> */}
         <DialogActions>
           <Button onClick={btnReply}>Reply</Button>
           <Button onClick={handleClose}>Cancel</Button>

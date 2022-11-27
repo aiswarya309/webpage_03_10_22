@@ -13,6 +13,8 @@ import ReplyPopup from '../Reply/reply'
 import { Button } from 'react-bootstrap';
 import replyGet from '../../Redux/Reply/replyGet'
 import replyView from '../../Redux/Reply/replyView'
+import feedbackEmpIdMiddle from '../../Redux/Feedback/feedbackEmpIdMiddle';
+import ReplayView from '../Reply/replayView'
 
 
 
@@ -21,53 +23,43 @@ function FeedbackMore(){
     const dispatch=useDispatch()
     const location:any=useLocation()
     const history=useHistory()
+    // const feedbackResult = useSelector((state:rootState)=>{
+    //     return state.feedbackReducer.getFeedback})
     const feedbackResult = useSelector((state:rootState)=>{
-        return state.feedbackReducer.getFeedback})
-    const replays=useSelector((state:rootState)=>{
-        return state.replayReducer.replay})
-        console.log("replays F_more:-",replays);
-        const id= location.state.id
+        return state.feedbackReducer.result})
+        // const fb_id=[feedbackResult.id]
+        // console.log("feedbackResult f_id",fb_id);
+    // const replays=useSelector((state:rootState)=>{
+    //     return state.replayReducer.fId})
+    //     console.log("replays F_more:-",replays,"id");
+    const replaysResult=useSelector((state:rootState)=>{
+        return state.replayReducer.resultReply})
+        // console.log("replays F_more:-",replaysResult);
+        const id:any= location.state.id
         const nameEmp=location.state.name
         const f_id =location.state.f_id
         const f_empId =location.state.f_empId
-
-        // console.log("id feedback more:",id);
-        // console.log("location.state.id:-",location.state.id);
-                
+    // console.log("id,nameEmp,f_id,f_empId",id,nameEmp,f_id,f_empId)
     useEffect(()=>{
         // console.log("FeedbackMore");
-        dispatch<any>(feedbackGet())
         // dispatch<any>(replyGet())
+        dispatch<any>(feedbackEmpIdMiddle({id:id}))
         // dispatch(replyView({f_id:f_id,f_empId:f_empId}))
-
     },[])
-    useEffect(()=>{
-        // dispatch<any>(replyGet())
-        dispatch(replyView({f_id:f_id,f_empId:f_empId}))
-
-    },[])
-    
+//     useEffect(()=>{
+//         // console.log("FeedbackMore Reply",replays);
+//         dispatch(replyView({id:f_id,f_empId:f_empId}))
+// // console.log('replays',replays);
+//     },[replaysResult])
     return(
         <div className='mainM'>
             <h2 className='heading'>Feedback about {nameEmp}</h2>
             {
                 feedbackResult && feedbackResult.map((data:any,index:number)=>{
-                    // feedbackResult.sort((a:any,b:any)=>b.id-a.id)
-                    // console.log("feedbackResult^^",feedbackResult);
-                    const dbid:any=[data.id]
-                    // console.log("id##",dbid);
+                    // console.log("$$$",data)
                     if(id == data.emp_id){
-                        // console.log("gata##$%^",data);
-                        // let empFeedback=[data]
-                        // console.log("arrry",arrry[0])
-                        // const last=empFeedback[0]
-                        // console.log("last",last);
-                        // console.log("id in more",data.id);
-                        // console.log("feedbackResult^^",feedbackResult);
-                        // const dbid:any=[data.id]
-                        // console.log("id##",dbid);
-                        // console.log("data.id##",data.id);
-                        // <p>#####{data.empName}</p>
+                        // console.log("FEEDBACKMORE data.emp_id,data.id",data.emp_id,data.id)
+                        // dispatch(replyView({id:data.id,f_empId:data.empId}))
                     return <div key={index} className='mainM2'><br/>
                         <div className='more'>
                             <div className="imgDivM">
@@ -86,26 +78,18 @@ function FeedbackMore(){
                             </div>
                             {/* <button onClick={()=>{history.push({pathname:'/replyComponent',state:{id:data.emp_id}})}}>Reply</button> */}
                             {/* <button className='btnMoreReply'>Reply</button> */}
-                            <div className='replyView'>
+                            {/* <div className='replyView'>
                                 {
                                     replays && replays.map((replyEmp:any,index:number)=>{
-                                        // console.log("replyEmp.f_id:-",replyEmp.f_id);
-                                        // console.log("data.id:-",data.id);
-                                        // console.log("replyEmp MAP:-",replyEmp);
-                                        
-                                        
                                         if(data.id === replyEmp.f_id){
-
-                                            // if(replays.length >5){
-                                            //     setDisabled(true)
-                                            // }
                                         return <div key={index} >
                                                 <h3>{replyEmp.reply}</h3>
                                             </div>
                                         }
                                     })
                                 }
-                            </div>
+                            </div> */}
+                            <ReplayView feedbackEmpId={data.emp_id} feedbackFid={data.id}/>
                         </div>
                     </div>
                         }
