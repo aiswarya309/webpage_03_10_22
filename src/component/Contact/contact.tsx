@@ -1,8 +1,13 @@
 import {useState} from "react";
 import './contact'
 import './ContactStyle.css'
+import { useDispatch, useSelector} from 'react-redux';
+import ContactUs from '../../Redux/ContactUs/contactUs'
+
 
 function Contact(){
+    const dispatch =useDispatch()
+
     const [list , setList]=useState({
         firsrName:'',
         phon:'',
@@ -11,6 +16,7 @@ function Contact(){
     })
     const{firsrName,phon,place,email} =list
     const submit =()=>{
+        dispatch<any>(ContactUs({name:firsrName,phn:phon,place:place,email:email}))
         localStorage.setItem('contact',JSON.stringify(list));
         setList({
             firsrName:'',
