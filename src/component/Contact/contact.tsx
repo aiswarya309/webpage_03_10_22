@@ -3,7 +3,9 @@ import './contact'
 import './ContactStyle.css'
 import { useDispatch, useSelector} from 'react-redux';
 import ContactUs from '../../Redux/ContactUs/contactUs'
-import { isNonNullExpression } from "typescript";
+// import { isNonNullExpression } from "typescript";
+import {ToastContainer ,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'  ;
 interface contact{
     resume:File
 }
@@ -33,24 +35,31 @@ function Contact(){
         formData.append("phon",phon)
         formData.append("place",place)
         formData.append("email",email)
-        // if(resume){
-
-            formData.append("resume",resume)
-        // }
+        formData.append("resume",resume)
         console.log("formData in contactform", formData )
         dispatch<any>(ContactUs(formData))
+        toast("Contact Added")
         // localStorage.setItem('contact',JSON.stringify(list));
         setFirsrName('')
         setPhon('')
         setPlace('')
         setEmail('')
-        setResume('')
+        // setResume("null")
+      
     }
     const fileUpload=(event: React.ChangeEvent<HTMLInputElement>)=>{
-
        const fileList=event.target.files
-       if(!fileList) return;
-       setResume(fileList[0])
+    //    if(!fileList) return;
+    //    console.log("fileList[0]",fileList);
+    //       setResume(fileList[0])
+          if((!fileList) || (fileList[0].size >=5120000)){
+                toast("size limit is 5mb")
+                //   alert("size is exceeded")
+               }else{
+                console.log("fileList[0]",fileList);
+                setResume(fileList[0])
+                
+       }
        
     }
 
@@ -63,7 +72,7 @@ function Contact(){
                     Phno: <input type="text" onChange={(e)=>setPhon(e.target.value)} value={phon}/><br/><br/>
                     Place: <input type="text" onChange={(e)=>setPlace(e.target.value)} value={place}/><br/><br/>
                     email: <input type="text" onChange={(e)=>setEmail(e.target.value)} value={email}/><br/><br/>
-                    file: <input type="file" onChange={fileUpload} /><br/><br/>
+                    file: <input type="file" onChange={fileUpload} accept=".jpg,.pdf,.png"/><br/><br/>
                     <button onClick={submit} type="button">Submit</button>
                     </form>
                 </div>
