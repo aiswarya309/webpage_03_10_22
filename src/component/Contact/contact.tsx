@@ -17,6 +17,7 @@ function Contact(){
     const [place,setPlace]=useState('')
     const [email,setEmail]=useState('')
     const [resume, setResume] = useState<any>('');
+    const ref = useRef<any>();
     // const resume=useRef(null)
 
     // const [list , setList]=useState<any>({
@@ -39,7 +40,7 @@ function Contact(){
         console.log("formData in contactform", formData )
         dispatch<any>(ContactUs(formData))
         toast("Contact Added")
-        // localStorage.setItem('contact',JSON.stringify(list));
+        ref.current.value = "";
         setFirsrName('')
         setPhon('')
         setPlace('')
@@ -72,7 +73,7 @@ function Contact(){
                     Phno: <input type="text" onChange={(e)=>setPhon(e.target.value)} value={phon}/><br/><br/>
                     Place: <input type="text" onChange={(e)=>setPlace(e.target.value)} value={place}/><br/><br/>
                     email: <input type="text" onChange={(e)=>setEmail(e.target.value)} value={email}/><br/><br/>
-                    file: <input type="file" onChange={fileUpload} accept=".jpg,.pdf,.png"/><br/><br/>
+                    file: <input type="file" onChange={fileUpload} accept=".jpg,.pdf,.png" ref={ref} /><br/><br/>
                     <button onClick={submit} type="button">Submit</button>
                     </form>
                 </div>
