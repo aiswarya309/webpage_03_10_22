@@ -51,7 +51,7 @@ export type headerMiddleware={
 
     //Employee
 export type data={
-    name:string,
+    first_name:string,
     id:number
 }
 export interface stateEmp{

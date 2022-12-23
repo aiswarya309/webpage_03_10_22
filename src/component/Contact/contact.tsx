@@ -59,7 +59,6 @@ function Contact(){
                }else{
                 console.log("fileList[0]",fileList);
                 setResume(fileList[0])
-                
        }
        
     }

@@ -9,12 +9,16 @@ import './feedback.css'
 import FeedbackPopup from "../FeebackAdd/feedbackPopup";
 import avatar from '../../Assets/Images/dan5276bb68cda93.png'
 import FeedbackAdd from '../FeebackAdd/feedbackAdd'
+import employeeGet from '../../Redux/EmployeeDb/employeeGet'
+
 
 function Feedback(){
     const history =useHistory()
     const dispatch=useDispatch()
-    const empData=useSelector((state:rootState)=>{
-        return state.EmpDetails.emp_details})
+    // const empData=useSelector((state:rootState)=>{
+    //     return state.EmpDetails.emp_details})
+    const empdata = useSelector((State:rootState)=>{
+        return State.EmpDetails.emp_details})
     const feedbackResult = useSelector((state:rootState)=>{
         return state.feedbackReducer.getFeedback})
         // console.log("feedbackResult ###:-",feedbackResult);
@@ -28,14 +32,16 @@ function Feedback(){
     // }
     // console.log("data.id feedback:-",data.id);
     useEffect(()=>{
-        dispatch<any>(EmpAPI())
+        dispatch<any>(employeeGet())
+
+        // dispatch<any>(EmpAPI())
         dispatch<any>(feedbackGet())
     },[])
         return(
             <div className="employee">
                 <div className="childd">
                 {
-                    empData && empData.map((data:any,index:number)=>{
+                    empdata && empdata.map((data:any,index:number)=>{
                         // feedbackResult.sort((a:any,b:any)=>b.id-a.id)
                         let last:any=[]
                         feedbackResult && feedbackResult.map((result:any,index:any)=>{
@@ -57,15 +63,15 @@ function Feedback(){
                             <div  className="child1">
                                 <div className="imgDiv">
                                 <img className="img" src={avatar} alt="The image is not loaded" />
-                                    <h3 className="para">{data.name}</h3>
+                                    <h3 className="para">{data.first_name}</h3>
                                 </div>
                                     <p className="paraId">EmpID  :   {data.id}</p>
                                     <p className="paraFeedback">{last.feedback}</p>
                                     <div className="btnMoreAdd">
-                                    <button className="button1" onClick={()=>{history.push({pathname:'/pageFeedbackMore',state:{id:data.id,name:data.name,f_id:last.id,f_empId:last.emp_id}});
+                                    <button className="button1" onClick={()=>{history.push({pathname:'/pageFeedbackMore',state:{id:data.id,name:data.first_name,f_id:last.id,f_empId:last.emp_id}});
                                     }}>MORE FEEDBACK</button>
                                     <FeedbackPopup className="button1">
-                                        <FeedbackAdd id={data.id} emp={data.name}/>
+                                        <FeedbackAdd id={data.id} emp={data.first_name}/>
                                     </FeedbackPopup>
                                     </div>
                                     {/* <button className="button1" onClick={()=>{history.push({pathname:'/pageFeedbackAdd',state:{id:data.id,name:data.name}});console.log("data.id",data.id);}}>Add Feedback</button> */}

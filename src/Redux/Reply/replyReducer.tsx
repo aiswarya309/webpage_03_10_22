@@ -18,7 +18,8 @@ function replayReducer(state:any=initialState,action:any){
             }
         case REPLAYS:
             // console.log("resultReply",action.payload)
-            return{...state,resultReply:action.payload}
+            return{...state,
+                resultReply:action.payload}
         default:
             return state ;
     }

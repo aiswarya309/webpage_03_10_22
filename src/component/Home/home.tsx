@@ -13,6 +13,18 @@ function Home(){
     // const {id,image}=image
     const dispatch = useDispatch()
     useEffect(()=>{
+        // if(4>9)
+        // console.log('1',5)
+        // console.log('2')
+        // console.log('3')
+        // setTimeout(() => {
+        //     console.log("1");
+            
+        // }, 2000);
+        // setTimeout(() => {
+        //     console.log("2");
+            
+        // }, 2000);
     dispatch<any>(HomeReduxApi())
     },[])
     const url="http://localhost:5000/slider/"

@@ -3,9 +3,12 @@
     justify-content: space-around;
 }
 .child{
-    width: 250px;
-    height: 150px;
+    width: 267px;
+    padding: 30px;
+    height: 160px;
     background-color: #336699;
+    font-size: 25px;
+    margin-top: 90px;
 }
 .headingEmp2{
     color: #336699;
