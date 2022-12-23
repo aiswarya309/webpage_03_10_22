@@ -3,7 +3,7 @@ import AppReducer from './App/reducerApp'
 import EmpDetails from './EmployeeDetails/empReduce'
 import HeaderApi from './HeaderRedux/reducerHeader'
 import HomeApi from './HomeRedux/reduceHome'
-import EmpFullDetails from '../Redux/EmployeeFullDetails/empReducer'
+import EmpFullDetails from './EmployeeFullDetails/empReducer'
 import SignupReducer from './signup/signupReducer'
 import LoginReducer from "./Login/loginReducer";
 import AboutDetails from './Description/AboutReducer'

@@ -1,4 +1,4 @@
-import {EMPLOYEE_DETAILS} from './empType'
+import {EMPLOYEE_DETAILS,EMPLOYEE_DATA} from './empType'
 import {data} from '../../type'
 
 export const empDetails =(emp_details:data)=>{
@@ -8,3 +8,10 @@ export const empDetails =(emp_details:data)=>{
     }
 
 }
+
+export const employeeData=(details:any)=>{
+    return{
+     type:EMPLOYEE_DATA,
+     payload : details
+    }
+ }

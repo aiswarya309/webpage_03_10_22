@@ -92,7 +92,7 @@
 }  
 .para{
     color: #102031;
-    font-size: 25px;
+    font-size: 20px;
     padding-left: 20px;
 }
 .paraId{
@@ -119,13 +119,13 @@
 }
 .img{
     border-radius: 50px;
-    width: 70px;
-    height: 70px;
+    width: 55px;
+    height: 55px;
 }
 .btnMoreAdd{
     display: flex;
     padding: 5px;  
-    margin: 9px;  
+    margin: 22px;  
     border: 2px solid #bec5cc;
     border-radius: 8px;  
     

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector , useDispatch } from 'react-redux/es/exports';
 import './Employee.css'
 import EmpAPI from "../../Redux/EmployeeDetails/empAPI";
+import employeeGet from '../../Redux/EmployeeDb/employeeGet'
 import {rootState} from '../../Redux/Reducer'
 import {data} from '../../type'
 
@@ -12,7 +13,8 @@ function Employee(){
         return State.EmpDetails.emp_details})
     const dispatch:any =useDispatch()
     useEffect(()=>{
-        dispatch(EmpAPI())
+        dispatch(employeeGet())
+        // dispatch(EmpAPI())
     },[])
     return(
         <div>
@@ -21,7 +23,7 @@ function Employee(){
                 {
                     empdata && empdata.map((data:data,index:number)=>{
                         return <div className="child" key={index} onClick={()=> history.push({pathname:'/pageEmployeeFullDetails',state:{id:data.id}})}>
-                                <h3>{data.name}</h3>
+                                <h3>{data.first_name} </h3>
                                 <p>ID:{data.id}</p>
                             </div>
                     })
